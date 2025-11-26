@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family:Poppins:wght@300;400;500&family:Playfair+Display:wght@500&display=swap" rel="stylesheet">
 
 <style>
-/* ---------- GLOBAL AESTHETIC ---------- */
 body {
   margin: 0;
   background: linear-gradient(135deg,#ffdde6,#ffeef7,#ffd6ec);
@@ -17,7 +16,7 @@ body {
   overflow-x: hidden;
 }
 
-/* container card */
+/* main card */
 .wrapper{
   max-width: 420px;
   margin: 40px auto;
@@ -28,7 +27,7 @@ body {
   box-shadow: 0 10px 35px rgba(255,140,175,0.35);
 }
 
-/* title */
+/* heading */
 h1{
   text-align:center;
   font-size: 2.2rem;
@@ -37,7 +36,6 @@ h1{
   text-shadow:0 0 10px rgba(255,150,190,0.55);
 }
 
-/* subtitle aesthetic */
 .subtitle{
   text-align:center;
   font-size: .9rem;
@@ -45,74 +43,78 @@ h1{
   margin-bottom:10px;
 }
 
-/* ---------- SCRAPBOOK POLAROID ---------- */
+/* slideshow area */
 .photo-area{
   position:relative;
-  margin:25px auto;
+  margin:25px auto 10px;
   width:100%;
-  height:320px;
+  height:320px;      /* fixed box; photos stay inside */
 }
 
+/* polaroid card */
 .polaroid{
+  --angle: 0deg;
   position:absolute;
+  top:50%;
+  left:50%;
   width:85%;
-  height:auto;
   background:#fff;
   padding:10px;
   border-radius:10px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
   opacity:0;
-  transition:1.2s ease-in-out;
-  transform:scale(1.05);
+  transition:opacity 1.1s ease-in-out, transform 1.1s ease-in-out;
+  transform:translate(-50%, -50%) scale(1.04) rotate(var(--angle));
 }
 
+/* visible slide */
 .polaroid.active{
   opacity:1;
-  transform:scale(1);
+  transform:translate(-50%, -50%) scale(1) rotate(var(--angle));
 }
 
-/* rotation randomness aesthetic */
-.style1{transform:rotate(-4deg);}
-.style2{transform:rotate(3deg);}
-.style3{transform:rotate(-2deg);}
-.style4{transform:rotate(4deg);}
-.style5{transform:rotate(-1deg);}
+/* random tilts */
+.style1{ --angle:-4deg; }
+.style2{ --angle:3deg; }
+.style3{ --angle:-2deg; }
+.style4{ --angle:4deg; }
+.style5{ --angle:-1deg; }
 
-/* image inside polaroid */
-.polaroid img{
+/* image */
+.polaroid img.photo{
   width:100%;
   border-radius:8px;
 }
 
-/* tape aesthetic */
+/* CSS tape */
 .tape{
   position:absolute;
-  width:80px;
   top:-18px;
   left:50%;
-  transform:translateX(-50%) rotate(-3deg);
-  opacity:0.85;
+  transform:translateX(-50%) rotate(-5deg);
+  width:90px;
+  height:26px;
+  background:rgba(255,255,255,0.8);
+  border-radius:6px;
+  box-shadow:0 4px 6px rgba(0,0,0,0.15);
+  border:1px dashed rgba(255,170,190,0.9);
 }
 
-/* ---------- MESSAGE ---------- */
-.message{
+/* message */
+.message,
+.ending{
   text-align:center;
   font-family:"Dancing Script",cursive;
   font-size:1.3rem;
   color:#804957;
-  margin-top:20px;
   line-height:1.6;
 }
-
 .ending{
-  text-align:center;
-  font-family:"Dancing Script",cursive;
-  font-size:1.25rem;
-  margin-top:15px;
+  margin-top:10px;
   color:#b25974;
 }
 
-/* ---------- EMOJIS FLOAT ---------- */
+/* floating emojis */
 .float{
   position:fixed;
   top:0;left:0;
@@ -121,20 +123,31 @@ h1{
   pointer-events:none;
   z-index:-1;
 }
-
 .emoji{
   position:absolute;
   font-size:28px;
   opacity:.6;
   animation:floatUp 9s infinite linear;
 }
-
 @keyframes floatUp{
   0%{transform:translateY(100vh);}
   100%{transform:translateY(-20vh);}
 }
 
-/* ---------- MUSIC BUTTON ---------- */
+/* Krishna sticker */
+.krishna{
+  width:90px;
+  position:absolute;
+  bottom:-12px;
+  left:-10px;
+  animation:bob 3s infinite ease-in-out alternate;
+}
+@keyframes bob{
+  from{transform:translateY(3px);}
+  to{transform:translateY(-6px);}
+}
+
+/* music button */
 #musicBtn{
   position:fixed;
   right:20px;
@@ -147,98 +160,14 @@ h1{
   box-shadow:0 0 15px pink;
   cursor:pointer;
 }
-
-/* Krishna sticker */
-.krishna{
-  width:90px;
-  position:absolute;
-  bottom:-12px;
-  left:-10px;
-  animation:bob 3s infinite ease-in-out alternate;
-}
-
-@keyframes bob{
-  from{transform:translateY(3px);}
-  to{transform:translateY(-6px);}
-}
-
 </style>
 </head>
 <body>
 
-<!-- Floating emojis -->
 <div class="float" id="float"></div>
 
 <div class="wrapper">
-  <img src="krishna.png" class="krishna"/>
+  <img src="krishna.png" class="krishna" alt="Krishna"/>
 
   <h1>Happy Birthday Minieeee 🎀💗</h1>
-  <p class="subtitle">my scrapbook version of you 🤍✨</p>
-
-  <!-- Slideshow area -->
-  <div class="photo-area">
-    <!-- Replace with your renamed images -->
-    <div class="polaroid style1 active"><img src="IMG1.jpg"><img class="tape" src="https://i.ibb.co/6ZGkBqb/tape.png"></div>
-    <div class="polaroid style2"><img src="IMG2.jpg"><img class="tape" src="https://i.ibb.co/6ZGkBqb/tape.png"></div>
-    <div class="polaroid style3"><img src="IMG3.jpg"><img class="tape" src="https://i.ibb.co/6ZGkBqb/tape.png"></div>
-    <div class="polaroid style4"><img src="IMG4.jpg"><img class="tape" src="https://i.ibb.co/6ZGkBqb/tape.png"></div>
-    <div class="polaroid style5"><img src="IMG5.jpg"><img class="tape" src="https://i.ibb.co/6ZGkBqb/tape.png"></div>
-    <div class="polaroid style1"><img src="IMG6.jpg"><img class="tape" src="https://i.ibb.co/6ZGkBqb/tape.png"></div>
-    <div class="polaroid style2"><img src="IMG7.jpg"><img class="tape" src="https://i.ibb.co/6ZGkBqb/tape.png"></div>
-    <div class="polaroid style3"><img src="IMG8.jpg"><img class="tape" src="https://i.ibb.co/6ZGkBqb/tape.png"></div>
-    <div class="polaroid style4"><img src="IMG9.jpg"><img class="tape" src="https://i.ibb.co/6ZGkBqb/tape.png"></div>
-    <div class="polaroid style5"><img src="IMG10.jpg"><img class="tape" src="https://i.ibb.co/6ZGkBqb/tape.png"></div>
-  </div>
-
-  <!-- Message -->
-  <div class="message">
-    You are the sweetest and most honest person I’ve ever met. <br>
-    Stay happy and never stop being the beautiful person you truly are. <br>
-    Wishing you another year full of soft moments, love, laughter <br>
-    and endless joy 💗✨
-  </div>
-
-  <div class="ending">
-    You're stuck with me forever… no returns, no exchange options 😌💗
-  </div>
-</div>
-
-<!-- Music -->
-<audio id="song" loop>
-<source src="https://files.catbox.moe/9fvhqp.mp3" type="audio/mpeg">
-</audio>
-<button id="musicBtn" onclick="toggleMusic()">🎶</button>
-
-<script>
-// slideshow logic
-let slides = document.querySelectorAll(".polaroid");
-let i = 0;
-setInterval(()=>{
-  slides[i].classList.remove("active");
-  i = (i+1)%slides.length;
-  slides[i].classList.add("active");
-},3500);
-
-// floating emojis
-const float = document.getElementById("float");
-const icons=["🦋","💗","✨","🌸","🩷"];
-for(let j=0;j<18;j++){
-  let s=document.createElement("span");
-  s.className="emoji";
-  s.innerHTML=icons[Math.floor(Math.random()*icons.length)];
-  s.style.left=Math.random()*100+"vw";
-  s.style.animationDuration=(6+Math.random()*6)+"s";
-  float.appendChild(s);
-}
-
-// music
-let m=false;
-function toggleMusic(){
-  let audio=document.getElementById("song");
-  m?audio.pause():audio.play();
-  m=!m;
-}
-</script>
-
-</body>
-</html>
+  <p
