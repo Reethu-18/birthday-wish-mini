@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Birthday Minieeee 🎀💗</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Pacifico&display=swap" rel="stylesheet">
+  <!-- Fonts: Poppins + Pacifico + Dancing Script -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Pacifico&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -40,7 +41,6 @@
       overflow: hidden;
     }
 
-    /* small paper stack effect */
     .card::before,
     .card::after {
       content: "";
@@ -88,7 +88,6 @@
       margin-bottom: 18px;
     }
 
-    /* Photo frame area */
     .frame-wrapper {
       margin: 0 auto 20px;
       background: #d9a783;
@@ -130,7 +129,6 @@
       transform: rotate(7deg);
     }
 
-    /* slideshow */
     .slideshow {
       position: relative;
       width: 100%;
@@ -161,7 +159,6 @@
       font-weight: 500;
     }
 
-    /* floral corners using emoji */
     .floral-left,
     .floral-right {
       position: absolute;
@@ -169,37 +166,25 @@
       font-size: 1.8rem;
       opacity: 0.9;
     }
-    .floral-left {
-      left: 16px;
-    }
-    .floral-right {
-      right: 16px;
-    }
+    .floral-left { left: 16px; }
+    .floral-right { right: 16px; }
 
-    .message {
+    /* handwriting-style message */
+    .message,
+    .ending {
       margin-top: 18px;
       text-align: center;
-      font-size: 0.98rem;
+      font-family: "Dancing Script", cursive;
+      font-size: 1.25rem;
       color: #7c5050;
-      line-height: 1.6;
-    }
-
-    .message strong {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
-      color: #c14579;
+      line-height: 1.7;
     }
 
     .ending {
-      margin-top: 14px;
-      text-align: center;
-      font-size: 0.98rem;
+      margin-top: 8px;
       color: #b2627e;
-      font-style: italic;
     }
 
-    /* floating butterflies & hearts (subtle) */
     .floating-layer {
       position: fixed;
       inset: 0;
@@ -226,7 +211,6 @@
       }
     }
 
-    /* Music button */
     #musicBtn {
       position: fixed;
       right: 18px;
@@ -240,137 +224,9 @@
       border: none;
     }
 
-    /* cute Krishna sticker spot (put your own PNG named krishna.png) */
     .krishna {
       position: absolute;
       width: 95px;
       bottom: -10px;
       left: -6px;
-      pointer-events: none;
-      animation: bob 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes bob {
-      from { transform: translateY(4px); }
-      to   { transform: translateY(-6px); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-8px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 480px) {
-      .card {
-        padding: 20px 16px 26px;
-      }
-      .frame-wrapper { margin-bottom: 16px; }
-      .slideshow { height: 230px; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- subtle floating butterflies / hearts -->
-  <div class="floating-layer" id="float-layer"></div>
-
-  <div class="card">
-    <!-- optional Krishna sticker -->
-    <img src="krishna.png" alt="Krishna" class="krishna">
-
-    <div class="top-label">for the sweetest soul</div>
-    <h1>Happy Birthday Minieeee 🎀💗</h1>
-    <div class="divider"></div>
-    <div class="subtitle">one of my favourite humans in the history of ever</div>
-
-    <!-- framed photo + slideshow -->
-    <div class="frame-wrapper">
-      <div class="frame-paper">
-        <div class="paperclip"></div>
-
-        <div class="slideshow">
-          <!-- put your photos here, rename files to match -->
-          <img src="IMG1.jpg" class="slide active" alt="photo 1">
-          <img src="IMG2.jpg" class="slide" alt="photo 2">
-          <img src="IMG3.jpg" class="slide" alt="photo 3">
-          <img src="IMG4.jpg" class="slide" alt="photo 4">
-          <img src="IMG5.jpg" class="slide" alt="photo 5">
-          <img src="IMG6.jpg" class="slide" alt="photo 6">
-          <img src="IMG7.jpg" class="slide" alt="photo 7">
-          <img src="IMG8.jpg" class="slide" alt="photo 8">
-          <img src="IMG9.jpg" class="slide" alt="photo 9">
-          <img src="IMG10.jpg" class="slide" alt="photo 10">
-        </div>
-
-        <div class="caption-strip">
-          Happy Birthday to one of my favourite people ever ✨
-        </div>
-      </div>
-    </div>
-
-    <!-- floral corners -->
-    <div class="floral-left">🌸🌷</div>
-    <div class="floral-right">🌹🌸</div>
-
-    <!-- your new message -->
-    <div class="message">
-      <strong>You are Sweetest and Honest Person I ever met</strong>
-      be happy and be yourself as you always with Have a one more great year
-      with lots oh happies and Joy 💗
-    </div>
-
-    <div class="ending">
-      Can't wait to hug you soon ✨
-    </div>
-  </div>
-
-  <!-- music (plays when button tapped) -->
-  <audio id="song" loop>
-    <source src="https://files.catbox.moe/9fvhqp.mp3" type="audio/mpeg">
-  </audio>
-
-  <button id="musicBtn" onclick="toggleMusic()">🎶</button>
-
-  <script>
-    // smooth fade slideshow
-    const slides = document.querySelectorAll(".slide");
-    let current = 0;
-
-    function showNextSlide() {
-      slides[current].classList.remove("active");
-      current = (current + 1) % slides.length;
-      slides[current].classList.add("active");
-    }
-    setInterval(showNextSlide, 3500); // 3.5s per slide
-
-    // floating butterflies & hearts
-    const floatLayer = document.getElementById("float-layer");
-    const icons = ["🦋","💗","✨","🩷"];
-    for (let i = 0; i < 18; i++) {
-      const span = document.createElement("span");
-      span.className = "float-emoji";
-      span.textContent = icons[Math.floor(Math.random() * icons.length)];
-      span.style.left = Math.random() * 100 + "vw";
-      span.style.animationDuration = (7 + Math.random() * 6) + "s";
-      span.style.animationDelay = (Math.random() * 5) + "s";
-      floatLayer.appendChild(span);
-    }
-
-    // music toggle (click to play/pause)
-    const music = document.getElementById("song");
-    const btn = document.getElementById("musicBtn");
-    let playing = false;
-
-    function toggleMusic() {
-      if (!playing) {
-        music.play();
-        btn.textContent = "🔊";
-      } else {
-        music.pause();
-        btn.textContent = "🎶";
-      }
-      playing = !playing;
-    }
-  </script>
-</body>
-</html>
+      pointer-even
