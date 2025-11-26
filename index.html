@@ -170,4 +170,107 @@ h1{
   <img src="krishna.png" class="krishna" alt="Krishna"/>
 
   <h1>Happy Birthday Minieeee 🎀💗</h1>
-  <p
+  <p class="subtitle">my scrapbook version of you 🤍✨</p>
+
+  <div class="photo-area">
+    <div class="polaroid style1 active">
+      <div class="tape"></div>
+      <img class="photo" src="IMG1.jpg" alt="photo 1">
+    </div>
+
+    <div class="polaroid style2">
+      <div class="tape"></div>
+      <img class="photo" src="IMG2.jpg" alt="photo 2">
+    </div>
+
+    <div class="polaroid style3">
+      <div class="tape"></div>
+      <img class="photo" src="IMG3.jpg" alt="photo 3">
+    </div>
+
+    <div class="polaroid style4">
+      <div class="tape"></div>
+      <img class="photo" src="IMG4.jpg" alt="photo 4">
+    </div>
+
+    <div class="polaroid style5">
+      <div class="tape"></div>
+      <img class="photo" src="IMG5.jpg" alt="photo 5">
+    </div>
+
+    <div class="polaroid style1">
+      <div class="tape"></div>
+      <img class="photo" src="IMG6.jpg" alt="photo 6">
+    </div>
+
+    <div class="polaroid style2">
+      <div class="tape"></div>
+      <img class="photo" src="IMG7.jpg" alt="photo 7">
+    </div>
+
+    <div class="polaroid style3">
+      <div class="tape"></div>
+      <img class="photo" src="IMG8.jpg" alt="photo 8">
+    </div>
+
+    <div class="polaroid style4">
+      <div class="tape"></div>
+      <img class="photo" src="IMG9.jpg" alt="photo 9">
+    </div>
+
+    <div class="polaroid style5">
+      <div class="tape"></div>
+      <img class="photo" src="IMG10.jpg" alt="photo 10">
+    </div>
+  </div>
+
+  <div class="message">
+    You are the sweetest and most honest person I’ve ever met. <br>
+    Stay happy and never stop being the beautiful person you truly are. <br>
+    Wishing you another year full of soft moments, love, laughter <br>
+    and endless joy 💗✨
+  </div>
+
+  <div class="ending">
+    You're stuck with me forever… no returns, no exchange options 😌💗
+  </div>
+</div>
+
+<audio id="song" loop>
+  <source src="https://files.catbox.moe/9fvhqp.mp3" type="audio/mpeg">
+</audio>
+<button id="musicBtn" onclick="toggleMusic()">🎶</button>
+
+<script>
+// slideshow
+let slides = document.querySelectorAll(".polaroid");
+let i = 0;
+setInterval(()=>{
+  slides[i].classList.remove("active");
+  i = (i+1)%slides.length;
+  slides[i].classList.add("active");
+},3500);
+
+// floating emojis
+const float = document.getElementById("float");
+const icons=["🦋","💗","✨","🌸","🩷"];
+for(let j=0;j<18;j++){
+  let s=document.createElement("span");
+  s.className="emoji";
+  s.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDuration=(6+Math.random()*6)+"s";
+  float.appendChild(s);
+}
+
+// music
+let m=false;
+function toggleMusic(){
+  let audio=document.getElementById("song");
+  m ? audio.pause() : audio.play();
+  m=!m;
+}
+</script>
+
+</body>
+</html>
