@@ -229,4 +229,127 @@
       width: 95px;
       bottom: -10px;
       left: -6px;
-      pointer-even
+      pointer-events: none;
+      animation: bob 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes bob {
+      from { transform: translateY(4px); }
+      to   { transform: translateY(-6px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 20px 16px 26px; }
+      .frame-wrapper { margin-bottom: 16px; }
+      .slideshow { height: 230px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- floating emojis -->
+  <div class="floating-layer" id="float-layer"></div>
+
+  <div class="card">
+    <!-- Krishna sticker (optional image named krishna.png) -->
+    <img src="krishna.png" alt="Krishna" class="krishna">
+
+    <div class="top-label">for the sweetest soul</div>
+    <h1>Happy Birthday Minieeee 🎀💗</h1>
+    <div class="divider"></div>
+    <div class="subtitle">one of my favourite humans in the history of ever</div>
+
+    <div class="frame-wrapper">
+      <div class="frame-paper">
+        <div class="paperclip"></div>
+
+        <div class="slideshow">
+          <!-- your 10 photos -->
+          <img src="IMG1.jpg" class="slide active" alt="photo 1">
+          <img src="IMG2.jpg" class="slide" alt="photo 2">
+          <img src="IMG3.jpg" class="slide" alt="photo 3">
+          <img src="IMG4.jpg" class="slide" alt="photo 4">
+          <img src="IMG5.jpg" class="slide" alt="photo 5">
+          <img src="IMG6.jpg" class="slide" alt="photo 6">
+          <img src="IMG7.jpg" class="slide" alt="photo 7">
+          <img src="IMG8.jpg" class="slide" alt="photo 8">
+          <img src="IMG9.jpg" class="slide" alt="photo 9">
+          <img src="IMG10.jpg" class="slide" alt="photo 10">
+        </div>
+
+        <div class="caption-strip">
+          Happy birthday to one of my favourite people ever ✨
+        </div>
+      </div>
+    </div>
+
+    <div class="floral-left">🌸🌷</div>
+    <div class="floral-right">🌹🌸</div>
+
+    <!-- UPDATED MESSAGE -->
+    <div class="message">
+      You are the sweetest and most honest person I’ve ever met.<br>
+      Stay happy and never stop being the beautiful person you truly are.<br>
+      Wishing you another year filled with love, laughter, soft moments<br>
+      and endless joy 💗✨
+    </div>
+
+    <!-- NEW ENDING LINE (option 2) -->
+    <div class="ending">
+      You’re stuck with me forever… no returns, no exchange options 😌💗
+    </div>
+  </div>
+
+  <audio id="song" loop>
+    <source src="https://files.catbox.moe/9fvhqp.mp3" type="audio/mpeg">
+  </audio>
+
+  <button id="musicBtn" onclick="toggleMusic()">🎶</button>
+
+  <script>
+    // slideshow
+    const slides = document.querySelectorAll(".slide");
+    let current = 0;
+    function showNextSlide() {
+      slides[current].classList.remove("active");
+      current = (current + 1) % slides.length;
+      slides[current].classList.add("active");
+    }
+    setInterval(showNextSlide, 3500);
+
+    // floating emojis
+    const floatLayer = document.getElementById("float-layer");
+    const icons = ["🦋","💗","✨","🩷"];
+    for (let i = 0; i < 18; i++) {
+      const span = document.createElement("span");
+      span.className = "float-emoji";
+      span.textContent = icons[Math.floor(Math.random() * icons.length)];
+      span.style.left = Math.random() * 100 + "vw";
+      span.style.animationDuration = (7 + Math.random() * 6) + "s";
+      span.style.animationDelay = (Math.random() * 5) + "s";
+      floatLayer.appendChild(span);
+    }
+
+    // music toggle
+    const music = document.getElementById("song");
+    const btn = document.getElementById("musicBtn");
+    let playing = false;
+
+    function toggleMusic() {
+      if (!playing) {
+        music.play();
+        btn.textContent = "🔊";
+      } else {
+        music.pause();
+        btn.textContent = "🎶";
+      }
+      playing = !playing;
+    }
+  </script>
+</body>
+</html>
